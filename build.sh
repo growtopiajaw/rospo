@@ -15,11 +15,11 @@ VERSION=${VERSION:=$DEV_VER}
 build() {
     EXT=""
     [[ $GOOS = "windows" ]] && EXT=".exe"
-    echo "Building ${GOOS} ${GOARCH}"
+    echo "Building ${GOOS} ${GOARCH} ${GOARM}"
     CGO_ENABLED=0 go build \
         -trimpath \
         -ldflags="-s -w -X 'github.com/ferama/rospo/cmd.Version=$VERSION'" \
-        -o ./bin/rospo-${GOOS}-${GOARCH}${EXT} .
+        -o ./bin/rospo-${GOOS}-${GOARCH}-${GOARM}${EXT} .
 }
 
 ### test units
